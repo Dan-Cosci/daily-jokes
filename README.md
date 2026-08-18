@@ -1,8 +1,4 @@
-Assuming you mean a basic `README.md` for your **FastAPI Joke API**, I'd keep the first version simple and expand it as the project grows.
 
-# README.md
-
-````markdown
 # Joke API
 
 A REST API built with FastAPI that provides jokes through HTTP endpoints.
