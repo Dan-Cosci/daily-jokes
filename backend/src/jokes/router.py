@@ -1,4 +1,7 @@
 from fastapi import APIRouter
+from fastapi.param_functions import Depends
+
+from src.core.security import Limiter
 
 router = APIRouter(prefix="/jokes")
 
