@@ -1,12 +1,10 @@
 from fastapi import FastAPI
 
-from dotenv import load_dotenv
-import os
+from src.jokes import jokesRouter
 
-load_dotenv(dotenv_path=".local.env")
-
-print(os.getenv("test"))
 app = FastAPI()
+
+app.include_router(jokesRouter)
 
 @app.get("/hello")
 async def hello():
