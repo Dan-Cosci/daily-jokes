@@ -11,6 +11,4 @@ database_url = URL.create(
     database=db_config["dbName"],
 )
 
-def show(): print(database_url)
-
 engine = create_engine(database_url)

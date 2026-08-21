@@ -1,13 +1,14 @@
-from fastapi import APIRouter
-from fastapi.param_functions import Depends
+from fastapi import APIRouter, Request
 
-from src.core.security import Limiter
+
+from src.core.security import limiter
 
 router = APIRouter(prefix="/jokes")
 
 
 @router.get("/")
-async def getJoke():
+@limiter.limit("5/minute")
+async def getJoke(request: Request):
     return {
         "text":"this is a test",
         "punchline": "this is the punchline"
