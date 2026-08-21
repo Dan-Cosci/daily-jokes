@@ -12,3 +12,6 @@ wheels/
 .env
 .env.*
 !.env.example
+
+# test db
+*.db

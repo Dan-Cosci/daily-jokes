@@ -5,10 +5,15 @@ from slowapi.errors import RateLimitExceeded
 from slowapi.middleware import SlowAPIMiddleware
 from src.core.security import limiter
 
-import src.core.config
-import src.db
+# models
+from src.jokes import model
 
 
+from src.db import Base, engine
+
+Base.metadata.create_all(bind=engine)
+
+# routers
 from src.jokes import jokesRouter
 
 app = FastAPI()
