@@ -1,0 +1,50 @@
+.navbar{
+  /* background-color: red; */
+
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+
+  padding: 1rem 1.8rem;
+
+  & .left {
+    Display: flex;
+    align-items: center;
+    flex-direction: row;
+
+    gap: 1rem;
+
+    & .logo{
+      width: 4rem;
+    }
+
+    & .logo-text{
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+  }
+
+  & .right {
+    ul{
+      Display: flex;
+      align-items: center;
+      flex-direction: row;
+      gap: 2rem;
+    }
+
+    li {
+      transition: all .1s ease-in;
+    }
+
+    li:hover {
+      color: var(--pink-light);
+      transform: translateY(-5%);
+    }
+    li:active {
+      color: var(--pink-normal);
+      transform: translateY(0);
+
+    }
+  }
+}
