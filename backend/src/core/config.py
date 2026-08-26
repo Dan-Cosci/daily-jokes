@@ -9,3 +9,5 @@ db = {
     "hostname":str(os.getenv("NEON_HOSTNAME")),
     "dbName":str(os.getenv("NEON_DB_NAME")),
 }
+
+rate = os.getenv("RATE_LIMIT")

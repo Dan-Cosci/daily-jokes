@@ -13,13 +13,14 @@ const JokePage = () => {
       punchline: "this is another punchline",
       explanation: "this is another explanation"
     }
-
+    
+    //puts the data in ther respective usestates
     setSetup(change.setup);
     setPunchline(change.punchline);
     setExplanation(change.explanation);
 
   }
-
+  
   
   return (
     <div className="jokes">
