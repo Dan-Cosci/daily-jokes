@@ -1,44 +1,17 @@
 :root{
-  --color-balck: #000;
-  --color-white: #fff;
- 
-  --purple-light: #C4B5FD;
-  --purple-normal: #8B5CF6;
-  --purple-saturated: #7C3AED;
+  --color-balck-1: #1a1a1a;
+  --color-balck-2: #121212;
+  --color-balck-3: #222222;
 
-  --pink-light: #FDA4AF;
-  --pink-normal: #F43F5E;
-  --pink-saturated: #E11D48;
+  --color-white-1: #F9F8F6;
+  --color-white-2: #F4F4F6;
+  --color-white-3: #F0ECE1;
 
-  --yellow-light: #FDE68A;
-  --yellow-normal: #FACC15;
-  --yellow-saturated: #EAB308;
+  --color-purple: #2E1A47;
+  --color-red: #FF3333;
+  --color-yellow: #FFB300;
+  --color-cyan: #00E5FF;
 
-  --cyan-light: #67E8F9;
-  --cyan-normal: #22D3EE;
-  --cyan-saturated: #06B6D4;
-
-  --background-light: #1A1625;
-  --background-normal: #100D18;
-  --background-saturated: #08060D;
-
-  --surface-light: #282136;
-  --surface-normal: #1A1526;
-  --surface-saturated: #120E1B;
-
-  --text-light: #FFFFFF;
-  --text-normal: #F5F3FF;
-  --text-saturated: #EDE9FE;
-
-  --muted-light: #C4BFD0;
-  --muted-normal: #A8A1B8;
-  --muted-saturated: #8F879F;
-
-  --border-light: #403650;
-  --border-normal: #302641;
-  --border-saturated: #241C32;
-
-
-  background-color: var(--background-light);
-  color: var(--text-saturated);
+  background-color: var(--color-white-1);
+  color: var(--color-balck-3);
 }

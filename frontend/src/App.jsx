@@ -3,7 +3,6 @@ import React from 'react'
 import { Outlet, Link } from "react-router-dom"
 
 import "./assets/css/index.css"
-import Logo from "./assets/Logo.png" 
 import { config } from "./config/config.js"
 
 const App = () => {
@@ -13,7 +12,7 @@ const App = () => {
       <nav className="navbar">
         <div className="left">
           <div className="logo">
-            <img src={Logo} alt="logo"  />
+            <p>🤡</p>
           </div>
           <div className="logo-text">Pampa-Gudvibes</div>
         </div>
