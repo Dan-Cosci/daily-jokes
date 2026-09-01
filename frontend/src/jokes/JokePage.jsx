@@ -22,8 +22,18 @@ const JokePage = () => {
     setExplanation(change.explanation);
 
   }
+<<<<<<< HEAD
 
 
+=======
+<<<<<<< HEAD
+  
+  
+=======
+
+
+>>>>>>> 8bb069a (Frontend: redesign)
+>>>>>>> 0356a32
   return (
     <>
 
