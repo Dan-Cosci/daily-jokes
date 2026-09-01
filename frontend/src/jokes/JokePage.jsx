@@ -6,6 +6,8 @@ const JokePage = () => {
   const [punchline, setPunchline] = useState("this is a punchline");
   const [explanation, setExplanation] = useState("this is the explanation");
 
+  const [cardHover, setCardHover] = useState(false)
+
   const emojis = [ "🎉","🥳","🤨"]
 
   const handleUpdate = async () => {
@@ -17,26 +19,37 @@ const JokePage = () => {
     }
 
     //puts the data in ther respective usestates
+    cardHover ? setCardHover(prev=>!prev) : "" ;
     setSetup(change.setup);
     setPunchline(change.punchline);
     setExplanation(change.explanation);
 
   }
-<<<<<<< HEAD
 
-
-=======
-<<<<<<< HEAD
+  const handleReveal = () => {
+    setCardHover(prev=>!prev);
+  }
   
-  
-=======
 
-
->>>>>>> 8bb069a (Frontend: redesign)
->>>>>>> 0356a32
   return (
     <>
+      <div className="jokes">
+        <div className="card-container">
+          <div className={`card ${cardHover ? "card-active" : "" }`} onClick={handleReveal}>
+            <div className="front-card">
+              <p>{setup}</p>
+            </div>
+            <div className="back-card">
+              <p>{punchline}</p>
+              <div className="explanation">
+                <p>{explanation}</p>
+              </div>
+            </div>
+          </div>
+          <button onClick={handleUpdate}>nextJoke</button>
 
+        </div>
+      </div>
     </>
   )
 }
