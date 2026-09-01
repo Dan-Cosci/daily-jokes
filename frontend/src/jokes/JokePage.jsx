@@ -16,6 +16,7 @@ const JokePage = () => {
       explanation: "this is another explanation"
     }
 
+    //puts the data in ther respective usestates
     setSetup(change.setup);
     setPunchline(change.punchline);
     setExplanation(change.explanation);

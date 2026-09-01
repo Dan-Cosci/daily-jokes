@@ -23,8 +23,4 @@ class Base(DeclarativeBase):
     pass
 
 def getDb():
-    db = localSession()
-    try:
-        yield db
-    finally:
-        db.close()
+    return localSession()

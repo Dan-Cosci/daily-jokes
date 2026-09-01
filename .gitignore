@@ -40,3 +40,33 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+*.vs
+*.xproj
+*.yml
+*.ymlc
+*.ymls
+*.ymlt
+*.ymlv
+*.ymlw
+*.ymlx
+*.ymlz
+*.ymlz
+*.ymlz
+*.ymlz
+*.yml
+
+# Git
+.gitignore
+.git
+# npm
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Docker
+.Dockerfile
+.dockerignore
+
+# testing
+*.db
+*.sqbpro
