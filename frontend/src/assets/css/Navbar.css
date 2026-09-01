@@ -17,6 +17,7 @@
 
     & .logo{
       width: 4rem;
+      font-size:3rem;
     }
 
     & .logo-text{
@@ -38,11 +39,9 @@
     }
 
     li:hover {
-      color: var(--pink-light);
       transform: translateY(-5%);
     }
     li:active {
-      color: var(--pink-normal);
       transform: translateY(0);
 
     }

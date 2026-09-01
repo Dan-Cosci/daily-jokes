@@ -6,6 +6,8 @@ const JokePage = () => {
   const [punchline, setPunchline] = useState("this is a punchline");
   const [explanation, setExplanation] = useState("this is the explanation");
 
+  const emojis = [ "🎉","🥳","🤨"]
+
   const handleUpdate = async () => {
     // call data base service returns data
     let change = {
@@ -20,27 +22,17 @@ const JokePage = () => {
     setExplanation(change.explanation);
 
   }
+<<<<<<< HEAD
   
   
+=======
+
+
+>>>>>>> 8bb069a (Frontend: redesign)
   return (
-    <div className="jokes">
-      <div className="card">
-        <div className="front-card">
-          <p>{setup}</p>
-        </div>
+    <>
 
-        <div className="back-card">
-          <p>{punchline}</p>
-          <div className="explanation">
-            <p>{explanation}</p>
-          </div>
-          <div className="btn-container">
-            <button className="random" onClick={handleUpdate}>Next Joke</button>
-          </div>
-        </div>
-
-      </div>
-    </div>
+    </>
   )
 }
 
