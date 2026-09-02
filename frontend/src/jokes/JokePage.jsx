@@ -5,12 +5,21 @@ const JokePage = () => {
   const [setup, setSetup] = useState("this is a setup");
   const [punchline, setPunchline] = useState("this is a punchline");
   const [explanation, setExplanation] = useState("this is the explanation");
+  const [pendingJoke, setPendingJoke] = useState(null);
 
   const [cardHover, setCardHover] = useState(false)
 
   const emojis = [ "🎉","🥳","🤨"]
 
   const handleUpdate = async () => {
+
+    setSetup(pendingJoke.setup);
+    setPunchline(pendingJoke.punchline);
+    setExplanation(pendingJoke.explanation);
+    setPendingJoke(null);
+  }
+
+  const handleNext = async () => {
     // call data base service returns data
     let change = {
       setup: "this is another setup",
@@ -19,23 +28,31 @@ const JokePage = () => {
     }
 
     //puts the data in ther respective usestates
-    cardHover ? setCardHover(prev=>!prev) : "" ;
-    setSetup(change.setup);
-    setPunchline(change.punchline);
-    setExplanation(change.explanation);
-
+    if (cardHover) {
+      setPendingJoke(change);
+      handleReveal()
+    } else {
+      setSetup(change.setup);
+      setPunchline(change.punchline);
+      setExplanation(change.explanation);
+    }
   }
 
   const handleReveal = () => {
     setCardHover(prev=>!prev);
   }
-  
+
 
   return (
     <>
       <div className="jokes">
         <div className="card-container">
-          <div className={`card ${cardHover ? "card-active" : "" }`} onClick={handleReveal}>
+          <div
+            className={`card ${cardHover ? "card-active" : ""}`}
+            onClick={handleReveal}
+            onTransitionEnd={() => { if(!cardHover && pendingJoke) handleUpdate()}}
+          >
+
             <div className="front-card">
               <p>{setup}</p>
             </div>
@@ -46,7 +63,7 @@ const JokePage = () => {
               </div>
             </div>
           </div>
-          <button onClick={handleUpdate}>nextJoke</button>
+          <button onClick={handleNext}>nextJoke</button>
 
         </div>
       </div>
