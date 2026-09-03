@@ -11,3 +11,8 @@ db = {
 }
 
 rate = os.getenv("RATE_LIMIT")
+
+cors = {
+    "allowedOrigins": str(os.getenv("CORS_ALLOWED_ORIGINS")),
+    "methods": str(os.getenv("CORS_METHODS")).split(","),
+}

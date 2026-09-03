@@ -1,7 +1,10 @@
 from fastapi import FastAPI
-
+from fastapi.middleware.cors import CORSMiddleware
 from slowapi.middleware import SlowAPIMiddleware
+
+
 from src.core.security import limiter
+from src.core import cors
 
 # models
 from src.jokes import model
@@ -23,6 +26,13 @@ app.state.limiter = limiter
 
 # middlewares
 app.add_middleware(SlowAPIMiddleware)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=cors["allowedOrigins"],
+    allow_credentials=True,
+    allow_methods=cors["methods"],
+    allow_headers=["*"],
+)
 
 
 app.include_router(jokesRouter)

@@ -4,8 +4,9 @@ from fastapi import APIRouter, Request
 from src.core.security import limiter
 from src.core.config import rate
 
+from src.db.db import getDb
 from src.db.schemas import responseModel
-from src.jokes.service import createJoke, getJoke
+from src.jokes.service import createJoke, getJoke, getRandomJoke
 from src.jokes.schemas import jokeModel
 
 router = APIRouter(prefix="/jokes")
@@ -22,10 +23,20 @@ async def joke(request: Request):
         data=jokes
     )
 
-@router.get("/random")
+@router.get("/random", response_model=responseModel, status_code=200)
 @limiter.limit(f"{rate}/minute")
-async def getRandomJoke(request: Request):
-    return ...
+async def getRandom(request: Request):
+
+    joke = await getRandomJoke()
+
+    return responseModel(
+        success=True,
+        message="Jokes Gathered",
+        status=200,
+        data=joke
+    )
+
+
 
 
 @router.post("/",response_model=responseModel, status_code=201)

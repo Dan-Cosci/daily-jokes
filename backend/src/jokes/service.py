@@ -1,5 +1,5 @@
 
-from sqlalchemy import select
+from sqlalchemy import select, func
 
 from src.db.db import getDb
 from src.jokes.models import Jokes
@@ -39,3 +39,17 @@ async def createJoke(joke : jokeModel) -> bool:
 
 
     return True
+
+async def getRandomJoke():
+    db = getDb()
+
+    try:
+        data = db.execute(
+            select(Jokes).order_by(func.random()).limit(1)
+        ).scalars().first()
+        return jokeResModel.model_validate(data, from_attributes=True)
+
+    except Exception as e:
+        print(e)
+    finally:
+        db.close()

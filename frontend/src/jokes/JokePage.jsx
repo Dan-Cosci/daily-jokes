@@ -1,5 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react'
+import { getJoke } from '../services/joke.service';
 
 const JokePage = () => {
   const [setup, setSetup] = useState("this is a setup");
@@ -9,7 +10,7 @@ const JokePage = () => {
 
   const [cardHover, setCardHover] = useState(false)
 
-  const emojis = [ "🎉","🥳","🤨"]
+  // const emojis = [ "🎉","🥳","🤨"]
 
   const handleUpdate = async () => {
 
@@ -21,11 +22,8 @@ const JokePage = () => {
 
   const handleNext = async () => {
     // call data base service returns data
-    let change = {
-      setup: "this is another setup",
-      punchline: "this is another punchline",
-      explanation: "this is another explanation"
-    }
+    let change = await getJoke();
+    console.log(change);
 
     //puts the data in ther respective usestates
     if (cardHover) {
