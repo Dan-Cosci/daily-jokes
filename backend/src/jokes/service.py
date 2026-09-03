@@ -21,8 +21,13 @@ async def createJoke(joke : jokeModel) -> bool:
     db = getDb()
 
     try:
-        pass
-        db.add(joke)
+        new_joke = Jokes(
+            setup=joke.setup,
+            punchline=joke.punchline,
+            explanation=joke.explanation
+        )
+
+        db.add(new_joke)
         db.commit()
     except Exception as e:
         print(e)

@@ -30,13 +30,6 @@ async def getRandomJoke(request: Request):
 @limiter.limit(f"{rate}/minute")
 async def postJoke(request: Request, joke: jokeModel):
 
-    if joke.text == "":
-        return {"error":"text cannot be empty"}
-
     await createJoke(joke)
 
-    return {
-        "success" : True,
-        "message" : "Joke created successfully",
-        "joke" : joke
-    }
+    return joke
