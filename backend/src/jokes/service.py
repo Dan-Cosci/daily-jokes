@@ -3,7 +3,7 @@ from sqlalchemy import select
 
 from src.db.db import getDb
 from src.jokes.models import Jokes
-from src.jokes.schemas import jokeModel
+from src.jokes.schemas import jokeModel, jokeResModel
 
 
 
@@ -11,7 +11,8 @@ async def getJoke() :
     db = getDb()
 
     try:
-        return db.execute(select(Jokes)).scalars().all()
+        data = db.execute(select(Jokes)).scalars().all()
+        return [jokeResModel.model_validate(r, from_attributes=True) for r in data]
     except Exception as e:
         print(e)
     finally:
@@ -32,6 +33,7 @@ async def createJoke(joke : jokeModel) -> bool:
     except Exception as e:
         print(e)
         db.rollback()
+        return False
     finally:
         db.close()
 
