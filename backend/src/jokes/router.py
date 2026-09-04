@@ -6,7 +6,7 @@ from src.core.config import rate
 
 from src.db.db import getDb
 from src.db.schemas import responseModel
-from src.jokes.service import createJoke, getJoke, getRandomJoke
+from src.jokes.service import bulkInsert, createJoke, getJoke, getRandomJoke
 from src.jokes.schemas import jokeModel
 
 router = APIRouter(prefix="/jokes")
@@ -58,3 +58,15 @@ async def postJoke(request: Request, joke: jokeModel):
             status=400,
             message="Failed to create joke"
         )
+
+@router.post("/bulk",response_model=responseModel, status_code=201)
+@limiter.limit(f"{rate}/minute")
+async def bulk(request: Request, joke: list[jokeModel]):
+    data = await bulkInsert(joke)
+
+    return responseModel(
+        success=True,
+        status=201,
+        message="Jokes Created successfully",
+        data=joke
+    )

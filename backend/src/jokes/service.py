@@ -53,3 +53,16 @@ async def getRandomJoke():
         print(e)
     finally:
         db.close()
+
+async def bulkInsert(joke: list[jokeModel]):
+    db = getDb()
+
+    try:
+        data = [Jokes(setup=x.setup, punchline=x.punchline, explanation=x.explanation) for x in joke]
+        print(data)
+        db.bulk_save_objects(data)
+        db.commit()
+    except Exception as e:
+        print(e)
+    finally:
+        db.close()
