@@ -8,11 +8,10 @@ const JokePage = () => {
   const [explanation, setExplanation] = useState("this is the explanation");
   const [pendingJoke, setPendingJoke] = useState(null);
 
-  const [cardHover, setCardHover] = useState(false)
+  const [isRevealed, setIsRevealed] = useState(false)
 
-  // const emojis = [ "🎉","🥳","🤨"]
-
-  const handleUpdate = async () => {
+  const handleUpdate = () => {
+    if (!pendingJoke) return;
 
     setSetup(pendingJoke.setup);
     setPunchline(pendingJoke.punchline);
@@ -21,23 +20,22 @@ const JokePage = () => {
   }
 
   const handleNext = async () => {
-    // call data base service returns data
-    let change = await getJoke();
-    console.log(change);
+    // fetch the next joke from the service
+    const next = await getJoke();
 
-    //puts the data in ther respective usestates
-    if (cardHover) {
-      setPendingJoke(change);
-      handleReveal()
+    // while revealed, queue the joke and flip back before swapping content
+    if (isRevealed) {
+      setPendingJoke(next);
+      setIsRevealed(false);
     } else {
-      setSetup(change.setup);
-      setPunchline(change.punchline);
-      setExplanation(change.explanation);
+      setSetup(next.setup);
+      setPunchline(next.punchline);
+      setExplanation(next.explanation);
     }
   }
 
   const handleReveal = () => {
-    setCardHover(prev=>!prev);
+    setIsRevealed(prev => !prev);
   }
 
 
@@ -46,13 +44,14 @@ const JokePage = () => {
       <div className="jokes">
         <div className="card-container">
           <div
-            className={`card ${cardHover ? "card-active" : ""}`}
+            className={`card ${isRevealed ? "card-active" : ""}`}
             onClick={handleReveal}
-            onTransitionEnd={() => { if(!cardHover && pendingJoke) handleUpdate()}}
+            onTransitionEnd={() => { if (!isRevealed && pendingJoke) handleUpdate() }}
           >
 
             <div className="front-card">
               <p>{setup}</p>
+              <span className="reveal-hint">tap to reveal</span>
             </div>
             <div className="back-card">
               <p>{punchline}</p>
@@ -61,9 +60,9 @@ const JokePage = () => {
               </div>
             </div>
           </div>
-          <button onClick={handleNext}>nextJoke</button>
-
         </div>
+        <button className="next-btn" onClick={handleNext}>Next joke →</button>
+
       </div>
     </>
   )

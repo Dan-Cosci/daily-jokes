@@ -25,6 +25,7 @@ app.state.limiter = limiter
 
 
 # middlewares
+print(cors["allowedOrigins"])
 app.add_middleware(SlowAPIMiddleware)
 app.add_middleware(
     CORSMiddleware,
