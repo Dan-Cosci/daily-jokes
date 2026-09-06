@@ -2,8 +2,8 @@
     height: 40px;
     width: 40px;
     border-radius: 500px;
-    border: solid 5px red;
-    border-bottom:solid 5px blue;
+    border: solid 5px #afafaf;
+    border-bottom:solid 5px #fff;
 
     animation: loading-spin 0.8s linear infinite;
 }

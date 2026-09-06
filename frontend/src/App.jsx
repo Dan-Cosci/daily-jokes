@@ -6,7 +6,6 @@ import "./assets/css/index.css"
 import { config } from "./config/config.js"
 
 const App = () => {
-
   return (
     <div className='body'>
       <nav className="navbar">
