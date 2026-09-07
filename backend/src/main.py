@@ -2,7 +2,6 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from slowapi.middleware import SlowAPIMiddleware
 
-
 from src.core.security import limiter
 from src.core import cors
 
@@ -17,6 +16,8 @@ Base.metadata.create_all(bind=engine)
 
 # routers
 from src.jokes import jokesRouter
+from src.auth import authRouter
+
 
 app = FastAPI()
 app.state.limiter = limiter
@@ -37,3 +38,4 @@ app.add_middleware(
 
 
 app.include_router(jokesRouter)
+app.include_router(authRouter)
