@@ -16,3 +16,5 @@ cors = {
     "allowedOrigins": str(os.getenv("CORS_ALLOWED_ORIGINS")).split(","),
     "methods": str(os.getenv("CORS_METHODS")).split(","),
 }
+
+env = str(os.getenv("UV_ENV"))

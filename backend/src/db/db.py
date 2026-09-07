@@ -3,6 +3,7 @@ from sqlalchemy.orm import DeclarativeBase, sessionmaker
 from sqlalchemy.engine import URL
 
 from src.core import db_config
+from src.core import env
 
 database_url = URL.create(
     drivername="postgresql",
@@ -12,10 +13,12 @@ database_url = URL.create(
     database=db_config["dbName"],
 )
 
-engine = create_engine(database_url, echo=True)
+if env == "development":
+    # testdb
+    engine = create_engine("sqlite:///./test.db", echo=True)
+else:
+    engine = create_engine(database_url, echo=True)
 
-# testdb
-# engine = create_engine("sqlite:///./test.db", echo=True)
 
 localSession = sessionmaker(bind=engine, autoflush=False, autocommit=False)
 
