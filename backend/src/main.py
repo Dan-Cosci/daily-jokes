@@ -7,7 +7,8 @@ from src.core.security import limiter
 from src.core import cors
 
 # models
-from src.jokes import model
+from src.jokes import Jokes
+from src.auth import Users
 
 
 from src.db import Base, engine
@@ -25,7 +26,6 @@ app.state.limiter = limiter
 
 
 # middlewares
-print(cors["allowedOrigins"])
 app.add_middleware(SlowAPIMiddleware)
 app.add_middleware(
     CORSMiddleware,

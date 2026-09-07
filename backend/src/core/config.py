@@ -18,3 +18,8 @@ cors = {
 }
 
 env = str(os.getenv("UV_ENV"))
+jwt = {
+    "jwtExpiresIn": str(os.getenv("JWT_EXPIRES_IN")),
+    "jwtSecrect": str(os.getenv("JWT_SECRET"))
+
+}
