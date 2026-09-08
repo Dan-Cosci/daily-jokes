@@ -16,6 +16,18 @@ export default function useJoke() {
     return joke
   }
 
+  const createJoke = async (joke) => {
+    try {
+
+    }
+    catch (err) {
+
+    }
+    finally {
+
+    }
+  }
+
 
   const isLoading = () => { return loading };
 
