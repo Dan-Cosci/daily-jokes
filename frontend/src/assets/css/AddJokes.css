@@ -1,13 +1,108 @@
-.add-joke{
-    height: 100%;
+.add-joke {
+  height: 100%;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem 2rem;
 }
 
-.add-joke__form{
-    display: flex;
-    flex-direction: column;
+.add-joke__title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--color-purple);
+}
+
+.add-joke__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+
+  background-color: var(--color-purple);
+  padding: 2.5rem 2rem;
+  border-radius: 1.5rem;
+
+  min-height: min(70vh, 26rem);
+  height: auto;
+  width: min(28rem, 92vw);
+
+  box-shadow: 0 1.25rem 3rem rgba(46, 26, 71, 0.25);
+}
+
+.add-joke__form__inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* reset the browser's default fieldset border/padding */
+.add-joke__form__inputs fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.add-joke__form__inputs legend {
+  padding: 0;
+  margin-left: 0.75rem;
+
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--color-yellow);
+}
+
+.add-joke__form__inputs input {
+  width: 100%;
+  padding: 0.75rem 1.25rem;
+  border-radius: 2rem;
+  border: none;
+
+  font-size: 1rem;
+  color: var(--color-balck-3);
+  background-color: var(--color-white-3);
+
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.add-joke__form__inputs input::placeholder {
+  color: rgba(34, 34, 34, 0.45);
+}
+
+.add-joke__form__inputs input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-yellow);
+}
+
+.add-joke__form__submit button {
+  width: 100%;
+  padding: 0.85rem 1.5rem;
+  border: none;
+  border-radius: 2rem;
+
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-balck-1);
+  background-color: var(--color-yellow);
+  cursor: pointer;
+
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+.add-joke__form__submit button:hover {
+  transform: translateY(-2px);
+  background-color: var(--color-yellow);
+  box-shadow: 0 0.5rem 1.25rem rgba(46, 26, 71, 0.35);
+}
+
+.add-joke__form__submit button:active {
+  transform: translateY(0);
 }

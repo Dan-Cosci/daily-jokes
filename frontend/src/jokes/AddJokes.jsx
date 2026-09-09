@@ -1,4 +1,3 @@
-import React from 'react';
 import { useState } from 'react';
 
 const initialState = {
@@ -10,39 +9,57 @@ const initialState = {
 function AddJokes() {
   const [form, setForm] = useState(initialState);
 
+  const handleChange = (e) => {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    console.log(form)
-  }
+    e.preventDefault();
+    console.log(form);
+  };
 
   return (
+    <div className="add-joke">
+      <h2 className="add-joke__title">Add a joke</h2>
 
-      <div className="add-joke">
-        <h2 className="add-joke__title">Add a joke</h2>
+      <form className="add-joke__form" onSubmit={handleSubmit}>
+        <div className="add-joke__form__inputs">
+          <fieldset>
+            <legend>Setup</legend>
+            <input
+              type="text"
+              name="setup"
+              value={form.setup}
+              onChange={handleChange}
+            />
+          </fieldset>
 
-        <form className='add-joke__form' onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="setup"
-            value={form.setup}
-            onChange={(e) => { setForm( (prev)=>({...prev , [e.target.name]: e.target.value }))}}
-          />
-          <input
-            type="text"
-            name="punchline"
-            value={form.punchline}
-            onChange={(e) => { setForm( (prev)=>({...prev , [e.target.name]: e.target.value }))}}
-          /><input
-            type="text"
-            name="explanation"
-            value={form.explanation}
-            onChange={(e) => { setForm( (prev)=>({...prev , [e.target.name]: e.target.value }))}}
-          />
+          <fieldset>
+            <legend>Punchline</legend>
+            <input
+              type="text"
+              name="punchline"
+              value={form.punchline}
+              onChange={handleChange}
+            />
+          </fieldset>
 
+          <fieldset>
+            <legend>Explanation</legend>
+            <input
+              type="text"
+              name="explanation"
+              value={form.explanation}
+              onChange={handleChange}
+            />
+          </fieldset>
+        </div>
+
+        <div className="add-joke__form__submit">
           <button type="submit">Add Joke</button>
-        </form>
-      </div>
-
+        </div>
+      </form>
+    </div>
   );
 }
 
