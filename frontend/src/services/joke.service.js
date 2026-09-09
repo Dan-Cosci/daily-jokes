@@ -7,5 +7,5 @@ export const getJoke = async () => {
 
 export const createJoke = async (jokes) => {
   const res = await api.post("/jokes", jokes)
-  return res.data.data
+  return res.data
 }

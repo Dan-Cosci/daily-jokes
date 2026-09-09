@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import useJoke from '../hooks/useJoke';
+import toast from 'react-hot-toast';
 
 const initialState = {
   setup: "",
@@ -9,13 +11,25 @@ const initialState = {
 function AddJokes() {
   const [form, setForm] = useState(initialState);
 
+  const { addJoke } = useJoke()
+
   const handleChange = (e) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(form);
+
+    await toast.promise(
+      addJoke(form),
+      {
+        loading: "Adding Joke...",
+        success: "Joke added successfully!",
+        error: "Joke did not add",
+      }
+    );
+
+    setForm(initialState);
   };
 
   return (

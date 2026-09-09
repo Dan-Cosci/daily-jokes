@@ -1,7 +1,6 @@
-import React from 'react';
 import { useState } from 'react';
 
-import { getJoke } from "../services/joke.service.js"
+import { createJoke, getJoke } from "../services/joke.service.js"
 
 export default function useJoke() {
   const [error, setError] = useState(null);
@@ -9,27 +8,42 @@ export default function useJoke() {
 
   const nextJoke = async () => {
     setLoading(true);
-    setError(null)
-    const joke = await getJoke();
-    console.log(joke);
-    setLoading(false);
-    return joke
+    setError(null);
+
+    try {
+      const joke = await getJoke();
+      console.log(joke);
+      return joke;
+    } catch (err) {
+      console.log(err);
+      setError(err);
+    } finally {
+      setLoading(false);
+    }
   }
 
-  const createJoke = async (joke) => {
-    try {
+  const addJoke = async (joke) => {
+    setLoading(true);
+    setError(null);
 
+    try {
+      const res = await createJoke(joke);
+
+      console.log(res);
+      return res;
     }
     catch (err) {
-
+      console.log(err);
+      setError(err);
+      throw err;
     }
     finally {
-
+      setLoading(false);
     }
   }
 
 
   const isLoading = () => { return loading };
 
-  return { error, loading, nextJoke, isLoading}
+  return { error, loading, nextJoke, isLoading, addJoke }
 }
